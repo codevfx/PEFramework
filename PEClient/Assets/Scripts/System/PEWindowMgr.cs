@@ -10,38 +10,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PWindow
+{     
+    public PEWindowEnum windowEnum;
+    public string windowName = "";
+    public PWindow(PEWindowEnum windowEnum, string luaName)
+    {
+        this.windowEnum = windowEnum;
+        if (luaName == "")
+        {
+            windowName = windowEnum.ToString();
+        }
+        else
+        {
+            windowName = luaName;
+        }
+    }
+
+    //覆写HashCode加快查询速度
+    public override int GetHashCode()
+    {
+        return (int)windowEnum + windowName.GetHashCode();
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+        else
+        {
+            PWindow pw = obj as PWindow;
+            return Equals(pw);
+        }
+    }
+    public bool Equals(PWindow pwindow)
+    {
+        if (pwindow == null)
+        {
+            return false;
+        }
+        else
+        {
+            return pwindow.windowEnum == windowEnum && pwindow.windowName == windowName;
+        }
+    }
+}
+
 public class PEWindowMgr : MonoBehaviour
 {
     ///////////////////////////Data Define//////////////////////////////
     private static PEWindowMgr instance = null;
-    public static PEWindowMgr Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+    public static PEWindowMgr Instance { get { return instance; } }
     private Transform uiRootTrans = null;
     private Transform windowRootTrans = null;
     private Transform cameraRootTrans = null;
     public bool isInitDone = false;
-    class PWindow
-    {
-        public PEWindowEnum windowEnum;
-        public string windowName = "";
-        public PWindow(PEWindowEnum windowEnum, string luaName)
-        {
-            this.windowEnum = windowEnum;
-            if (luaName == "")
-            {
-                windowName = windowEnum.ToString();
-            }
-            else
-            {
-                windowName = luaName;
-            }            
-        }
-    }
     class PWindowType
     {
         public WindowBase windowBase;
@@ -80,6 +104,9 @@ public class PEWindowMgr : MonoBehaviour
         cameraRootTrans = PEUITools.GetTrans(uiRootTrans, "cameraRoot");        
         isInitDone = true;
     }
+    //----------------------------------------------------------------//
+
+    ///////////////////////////WindowControl////////////////////////////
 
     //控制UI窗口的状态 open:窗口是否打开，state:状态控制参数，两者都传递到WindowBase的InitWindow()中去。
     public void SetWindowState(PEWindowEnum windowEnum, ResType resType, string luaName = "", bool open = true, int state = 0)
@@ -88,11 +115,11 @@ public class PEWindowMgr : MonoBehaviour
         if (!windowDic.ContainsKey(pwindow))
         {
             InitWindowCache(windowEnum, resType, luaName);
-        }
-        WindowBase wb = windowDic[pwindow].windowBase;
+        }        
+        var wb = windowDic[pwindow].windowBase;
         wb.curWindowEnum = windowEnum;
         wb.luaWindowName = luaName;
-        wb.InitWindow(open, state);
+        wb.InitWindow(open, state);        
     }
     //预加载窗口物体进缓存
     public void InitWindowCache(PEWindowEnum windowEnum, ResType resType, string luaName = "", ResCacheType cacheType = ResCacheType.Never)

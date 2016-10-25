@@ -41,7 +41,7 @@ public class ResourceMgr : MonoBehaviour
         
         if (!ressDic.ContainsKey(reskey))
         {
-            Debug.LogError("Load Res:" + reskey.name + "Error!");
+            Debug.LogError("Load Res:" + reskey.name + " Error!");
             return null;
         }
         return Instantiate(resItem.obj);

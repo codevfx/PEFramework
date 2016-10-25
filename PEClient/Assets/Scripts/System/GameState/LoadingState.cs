@@ -9,13 +9,11 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class LoadingState : IGameState 
 {
     public static bool mLoadSceneDone = false;
     private string mSceneName = "";
     
-
     ///////////////////////////MainFunctions////////////////////////////
     public override void Enter()
     {
