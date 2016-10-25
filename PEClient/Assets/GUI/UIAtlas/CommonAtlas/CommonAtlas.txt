@@ -1,0 +1,52 @@
+{"frames": {
+
+"bg_reg.png":
+{
+	"frame": {"x":1,"y":1,"w":436,"h":394},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":436,"h":394},
+	"sourceSize": {"w":436,"h":394}
+},
+"btn_blue1.png":
+{
+	"frame": {"x":439,"y":1,"w":186,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":62},
+	"sourceSize": {"w":186,"h":62}
+},
+"btn_blue2.png":
+{
+	"frame": {"x":627,"y":1,"w":186,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":62},
+	"sourceSize": {"w":186,"h":62}
+},
+"btn_blue3.png":
+{
+	"frame": {"x":815,"y":1,"w":186,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":62},
+	"sourceSize": {"w":186,"h":62}
+},
+"input.png":
+{
+	"frame": {"x":1003,"y":1,"w":62,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":62},
+	"sourceSize": {"w":62,"h":62}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "CommonAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":4096},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:64e973741545c8d43f84383f959f1634:51d04c590549d7a408517e6f1489b46b:3469746aa36525eb3150c3e4f1101e9d$"
+}
+}
